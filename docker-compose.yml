@@ -1,0 +1,32 @@
+version: '2.2'
+services:
+  mongo_db:
+    image: tutum/mongodb
+    container_name: mongo_db
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+      - AUTH=no
+    volumes:
+      - ${PWD}/data_mongo:/data/db
+    ports:
+      - 27017:27017
+      - 28017:28017
+    networks:
+      - net_mongo
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    networks:
+      - net_mongo
+    depends_on:
+      - mongo_db
+
+volumes:
+  data_mongo:
+    driver: local
+
+networks:
+  net_mongo:
+    driver: bridge
