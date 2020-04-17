@@ -12,7 +12,7 @@ docker-compose (https://docs.docker.com/compose/install/)
 ```
 git clone https://github.com/leoberbert/api_contact.git
 
-cd api_pdv
+cd api_contact
 ```
 
 ### Iniciar o Docker Compose:
